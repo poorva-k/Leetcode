@@ -1,0 +1,38 @@
+class Solution {
+    public String reverseVowels(String s) {
+        if(s.length() == 0 || s.length() ==1)
+            return s;
+        int front = 0;
+        int back = s.length()-1;
+        char[] schar = s.toCharArray();
+        while(front <=back){
+            if(isVowel(schar[front]) && isVowel(schar[back])){
+                char temp = schar[front];
+                schar[front] = schar[back];
+                schar[back] = temp;
+                front ++;
+                back--;
+            }
+            else{
+             if(!isVowel(schar[front]))
+                front++;
+            if(!isVowel(schar[back]))
+                back--;   
+            }
+            
+            
+           
+        }
+           
+        
+        return String.valueOf(schar);
+                
+    }
+     
+    public boolean isVowel(char a){
+        
+        if(a=='a' || a=='e' || a=='i' || a=='o' || a=='u' || a=='A' || a=='E' || a=='I' || a=='O' || a=='U')
+            return true;
+        return false;
+    }
+}
