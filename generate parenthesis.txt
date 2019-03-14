@@ -1,0 +1,15 @@
+class Solution {
+    List<String> result = new ArrayList();
+    public List<String> generateParenthesis(int n) {
+        addParanthesis(0,0,n,"");
+        return result;
+    }
+    public void addParanthesis(int open, int close, int n , String s){
+        if(s.length() == n*2)
+            result.add(s);
+        if(open<n)
+            addParanthesis(open+1, close, n, s+"(" );
+        if(close<open)
+            addParanthesis(open, close+1, n, s+")" );
+    }
+}
