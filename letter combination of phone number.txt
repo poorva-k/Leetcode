@@ -1,0 +1,35 @@
+class Solution {
+    List<String> result = new ArrayList<>();
+    
+    HashMap<Character, String> map = new HashMap<Character, String>() {{
+    put('2', "abc");
+    put('3', "def");
+    put('4', "ghi");
+    put('5', "jkl");
+    put('6', "mno");
+    put('7', "pqrs");
+    put('8', "tuv");
+    put('9', "wxyz");
+  }};
+    
+    public List<String> letterCombinations(String digits) {
+        if(digits.length() ==0)
+            return result;
+        findCombinations("" , digits);
+     return result;   
+    }
+    
+    public void findCombinations(String combination, String digits){
+        if( digits.length()==0)
+            result.add(combination);
+        else{
+            String letters=   map.get(digits.toCharArray()[0]);
+            char[] cletter = letters.toCharArray();
+            for(int i = 0 ; i < letters.length(); i++){
+                char letter = cletter[i];
+                findCombinations(combination + letter , digits.substring(1));
+            }
+        }
+        
+    }
+}
